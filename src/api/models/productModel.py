@@ -1,4 +1,4 @@
-from ..extension import db
+from api.extension import db
 
 class ProductoModel(db.Model):
     __tablename__ = 'productos'
@@ -9,6 +9,7 @@ class ProductoModel(db.Model):
     categoria = db.Column(db.String(50), nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     
+
 
     #CONTRUCTOR
     def __init__(self, nombreProducto, precio, descripcion, categoria, stock):

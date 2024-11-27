@@ -1,4 +1,5 @@
 from ..extension import db
+from .orderModel import OrderModel
 from bcrypt import checkpw, gensalt, hashpw
 
 

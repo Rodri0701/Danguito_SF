@@ -3,6 +3,7 @@ from api.models.userModel import UserModel
 from api.models.productModel import ProductoModel
 from api.models.listaModel import ListDeseoModel
 from api.models.comentarios import ReseñaModel
+from api.models.orderModel import OrderModel
 
 
 with app.app_context():

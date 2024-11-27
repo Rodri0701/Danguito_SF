@@ -1,4 +1,4 @@
-from flask import Flask, Response, request
+from flask import Flask, Response, jsonify, request
 from flask_restful import reqparse, Api, Resource, fields, marshal_with, abort
 from api.models.userModel import UserModel, db
 import json
@@ -148,15 +148,17 @@ class User(Resource):
             user.direccion = data['direccion']
 
         # Confirmar cambios en la base de datos
-        try:
-            db.session.commit()
-        except Exception as e:
-            db.session.rollback()
-            abort(500, message=f"Error al guardar los cambios: {str(e)}")
-
+        user.userName = data['userName']
+        user.password = data['password']
+        user.email = data['email']
+        user.nombres = data['nombres']
+        user.Ap_Paterno = data['Ap_Paterno']
+        user.Ap_Materno = data['Ap_Materno']
+        user.celular = data['celular']
+        user.direccion = data['direccion']
+        db.session.commit()
         return user, 200
-
-
+    
 
       
         
