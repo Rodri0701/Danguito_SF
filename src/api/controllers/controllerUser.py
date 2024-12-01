@@ -77,7 +77,7 @@ class Users(Resource):
         user = UserModel(userName=args['userName'], password=args['password'], email=args['email'], nombres=args['nombres'], Ap_Paterno=args['Ap_Paterno'], Ap_Materno=args['Ap_Materno'], celular=args['celular'], direccion=args['direccion'], rol = args['rol'])
         db.session.add(user)
         db.session.commit()
-        return user,201
+        return jsonify ({"message": "Usuario creado con exito"}), 200
 
 
 #CLASE PARA MOSTRAR, EDITAR O ELIMINAR A UN SOLO USUARIOS

@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api
+from flask_cors import CORS
 from api.extension import db
 from src.api.controllers.controllerUser import Users, User, Login  #CONTROLADORES PARA LOS USUARIOS
 from src.api.controllers.controllerProduct import Product, Products #CONTROLADORES PARA LOS PRODUCTOS
@@ -12,6 +13,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///DANGUITO.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 api = Api(app)
+
+
+CORS(app)
+
 
 #RUTAS PARA EL API USERS
 api.add_resource(Users, '/api/User/') #RUTA PARA VER TODOS LOS USUARIOS  Y AGREGAR NUEVOS

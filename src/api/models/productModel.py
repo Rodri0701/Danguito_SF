@@ -8,19 +8,21 @@ class ProductoModel(db.Model):
     descripcion = db.Column(db.String(500), nullable=False)
     categoria = db.Column(db.String(50), nullable=False)
     stock = db.Column(db.Integer, nullable=False)
+    imagen = db.Column(db.String(255), nullable=False)
     
 
 
     #CONTRUCTOR
-    def __init__(self, nombreProducto, precio, descripcion, categoria, stock):
+    def __init__(self, nombreProducto, precio, descripcion, categoria, stock, imagen):
         self.nombreProducto = nombreProducto
         self.precio = precio
         self.descripcion = descripcion
         self.categoria = categoria
         self.stock = stock
+        self.imagen = imagen
 
     #Representacion del modelo
     def __repr__(self):
-        return f"Producto (nombreProducto = {self.nombreProducto}, precio = {self.precio}, descripcion = {self.descripcion}, categoria = {self.categoria}, stock = {self.stock})"
+        return f"Producto (nombreProducto = {self.nombreProducto}, precio = {self.precio}, descripcion = {self.descripcion}, categoria = {self.categoria}, stock = {self.stock}, imagen = {self.imagen})"
     
 

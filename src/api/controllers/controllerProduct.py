@@ -11,6 +11,7 @@ product_arg.add_argument('precio', type=int, required=True, help='price is requi
 product_arg.add_argument('descripcion', type=str, required=False, help='description is required')
 product_arg.add_argument('categoria', type=str, required=True, help='category is required')
 product_arg.add_argument('stock', type=int, required=True, help='stock is required')
+product_arg.add_argument('imagen', type=str, required=False, help='image is required')
 
 #CAMPOS DE SALIDA.
 productFields={
@@ -18,7 +19,8 @@ productFields={
     'precio': fields.Integer,
     'descripcion': fields.String,
     'categoria': fields.String,
-    'stock': fields.Integer
+    'stock': fields.Integer,
+    'imagen': fields.String
 }   
 
 #CLASE PARA VER O AGREGAR PRODUCTOS
@@ -60,7 +62,7 @@ class Products(Resource):
             abort(400, message="El stock solo debe ser un número")
         
         #CREAR PRODUCTO
-        producto = ProductoModel(nombreProducto=productos['nombreProducto'], precio=productos['precio'], descripcion=productos['descripcion'], categoria=productos['categoria'], stock=productos['stock'])
+        producto = ProductoModel(nombreProducto=productos['nombreProducto'], precio=productos['precio'], descripcion=productos['descripcion'], categoria=productos['categoria'], stock=productos['stock'], imagen=productos['imagen'])
         db.session.add(producto)
         db.session.commit()
         return producto, 201
@@ -117,5 +119,6 @@ class Product(Resource):
         producto.descripcion = productos['descripcion']
         producto.categoria = productos['categoria']
         producto.stock = productos['stock']
+        producto.imagen = productos['imagen']
         db.session.commit()
         return producto, 200
